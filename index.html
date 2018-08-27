@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Testing 3D Maps!</title>
+		<meta name="description" content="Testing 3D Maps">
+		<meta name="author" content="Rishabh Santoshkumar">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="http://www.webglearth.com/v2/api.js"></script>
+		
+		
+		
+    <script>
+	var earth;
+    function initialize() {
+        var options = {atmosphere: true, sky: true, center: [19.4545, 80.5445], zoom: 3.5};
+        earth = WE.map('earth_div', options);
+        WE.tileLayer('http://tileserver.maptiler.com/nasa/{z}/{x}/{y}.jpg', {
+          minZoom: 0,
+          maxZoom: 5,
+          attribution: 'NASA * Rishabh S'
+        }).addTo(earth);
+		//Mumbai
+		var marker = WE.marker([19.075983, 72.877655]).addTo(earth);
+        marker.bindPopup("<a href='https://artsandculture.google.com/entity/m04vmp'><img src='./Assets/Img/gate.png' width='40' height='40'><br><b>Mumbai</b></a>", {maxHeight: 20, maxWidth: 40, closeButton: false}).openPopup();
+		
+		//Hyderabad
+        var marker2 = WE.marker([17.385044, 78.486671]).addTo(earth); 
+        marker2.bindPopup("<a href='https://artsandculture.google.com/entity/m09c6w'><img src='./Assets/Img/charminar.png' width='40' height='40'><br><b>Hyderabad</b></a>", {maxHeight: 20, maxWidth: 40, closeButton: false}).openPopup();
+		
+		//Delhi
+        var marker3 = WE.marker([28.704060, 77.102493]).addTo(earth); 
+        marker3.bindPopup("<a href='https://artsandculture.google.com/entity/m0dlv0'><img src='./Assets/Img/taj.png' width='40' height='40'><br><b>New Delhi</b></a>", {maxHeight: 20, maxWidth: 40, closeButton: false}).openPopup();
+
+        //Kolkata
+        var marker4 = WE.marker([22.572645, 88.363892]).addTo(earth); 
+        marker4.bindPopup("<a href='https://artsandculture.google.com/entity/m0cvw9'><img src='./Assets/Img/victoria.png' width='40' height='40'><br><span><b>Kolkata</b></a></span>", {maxHeight: 20, maxWidth: 40, closeButton: false}).openPopup();
+
+		//Chennai
+        var marker5 = WE.marker([13.082680, 80.270721]).addTo(earth); 
+        marker5.bindPopup("<a href='https://artsandculture.google.com/entity/m0c8tk'><img src='./Assets/Img/chennai.png' width='40' height='40'><br><span><b>Chennai</b></a></span>", {maxHeight: 20, maxWidth: 40, closeButton: false}).openPopup();
+		
+		//Thiruvananthapuram
+        var marker6 = WE.marker([8.524139, 76.936638]).addTo(earth); 
+        marker6.bindPopup("<a href='https://artsandculture.google.com/entity/m0fk98'><img src='./Assets/Img/kerala.png' width='40' height='40'><br><span><b>Trivandrum</b></a></span>", {maxHeight: 20, maxWidth: 40, closeButton: false}).openPopup();
+
+		}
+	
+	function getZoomLevel() {
+        alert('Current zoom is: ' + Math.round(earth.getZoom()));
+      }
+
+	 function flyToMumbai() {
+			//earth.fitBounds([[20, 35], [32, 92]]);
+			earth.fitBounds(earth.getBounds());
+         earth.panInsideBounds([[19, 62], [19, 82]],
+                {heading: 0, tilt: 0, duration: 5});
+      }
+	 function flyToDelhi() {
+			//earth.fitBounds([[20, 35], [32, 92]]);
+			earth.fitBounds(earth.getBounds());
+         earth.panInsideBounds([[28, 67], [28, 87]],
+                {heading: 0, tilt: 0, duration: 5});
+      }
+	 function flyToKolkata() {
+			//earth.fitBounds([[20, 35], [32, 92]]);
+			earth.fitBounds(earth.getBounds());
+         earth.panInsideBounds([[22, 78], [22, 98]],
+                {heading: 0, tilt: 0, duration: 5});
+      }
+	 function flyToChennai() {
+			//earth.fitBounds([[20, 35], [32, 92]]);
+			earth.fitBounds(earth.getBounds());
+         earth.panInsideBounds([[13, 70], [13, 90]],
+                {heading: 0, tilt: 0, duration: 5});
+      }
+	 function flyToHyd() {
+			//earth.fitBounds([[20, 35], [32, 92]]);
+			earth.fitBounds(earth.getBounds());
+         earth.panInsideBounds([[17, 68], [17, 88]],
+                {heading: 0, tilt: 0, duration: 5});
+      } 
+	 function flyToTvm() {
+			//earth.fitBounds([[20, 35], [32, 92]]);
+			earth.fitBounds(earth.getBounds());
+         earth.panInsideBounds([[8, 66], [8, 86]],
+                {heading: 0, tilt: 0, duration: 5});
+      }  
+	 
+	 function flyToTest() {
+			earth.fitBounds(earth.getBounds());
+         earth.panInsideBounds([[8, 66], [8, 86]],
+                {heading: 0, tilt: 0, duration: 5});
+      }  
+	 
+	 function resetView() {
+       earth.setView([19.4545, 80.5445],3.5);
+      }
+	 /* Testing 
+	 function panTo(coords) {
+		earth.panTo(coords);	
+     }
+	 
+	 <input type="button" value="TestFly" onclick="panTo([19.075983, 72.877655])"><br>
+	 
+	 <input type="button" value="Fly Test" onclick="flyToTest()">
+	 */
+		
+    </script>
+    <style>
+      html, body{padding: 0; margin: 0;}
+		#earth_div{top: 0; right: 0; bottom: 0; left: 0;background-color: #002; position: absolute !important;}
+		#buttons {position: absolute; Top:10px; Right: 10px;}
+		#flyTo {position: absolute; bottom:20px; left: 10px;}
+      </style>
+      <title>Testing 3D Map</title>
+    </head>
+	
+	
+    <body onload="initialize()">
+		
+			<div id="earth_div"></div>
+			<div id="flyTo">
+				<input type="button" value="Fly to Mumbai" onclick="flyToMumbai()"><br>
+				<input type="button" value="Fly to New Delhi" onclick="flyToDelhi()"><br>
+				<input type="button" value="Fly to Kolkata" onclick="flyToKolkata()"><br>
+				<input type="button" value="Fly to Chennai" onclick="flyToChennai()"><br>
+				<input type="button" value="Fly to Thiruvananthapuram" onclick="flyToTvm()"><br>
+				<input type="button" value="Fly to Hyderabad" onclick="flyToHyd()"><br>
+				
+			 </div>
+		  
+			 <div class="container">
+				<div class="btn-group-vertical">
+				<button type="button" class="btn btn-primary" onclick="flyToMumbai()">Fly to Mumbai</button>
+				<button type="button" class="btn btn-primary" onclick="flyToDelhi()">Fly to New Delhi</button>
+				<button type="button" class="btn btn-primary" onclick="flyToKolkata()">Fly to Kolkata</button>
+				</div>
+			</div>
+		  
+		  	<div id="buttons">
+					<input type="button" value="Reset View" onclick="resetView()"><br>
+					<input type="button" value="Check Current Zoom" onclick="getZoomLevel();"><br>
+					
+				</div>
+		  
+		</div>
+
+  </body>
+</html>
